@@ -1,0 +1,33 @@
+''' 
+This is a calculator for the game "Forge of Empires".
+You can calculate investments in great buildings (GB). 
+
+This is my first program in python.
+Sorry for my english. 
+(c) Holger Hentze
+'''
+import math
+FPGB = int(input('Total FP of the level: '))
+FPalreadyIn = int(input('FP already in the level: '))
+FPmissing = FPGB-FPalreadyIn
+print('FP missing: '+str(FPmissing))
+FPreward = int(input('FP Reward: '))
+FParcBonus = int(input('FP Arc-Bonus: '))
+FPtotalBonus = FPreward+FParcBonus
+print('Total Bonus: '+str(FPtotalBonus))
+FPotherPlayer = int(input('FP from other Player from the place you are interessted in: '))
+
+if FPotherPlayer == 0:
+    FPtoPutIn = FPmissing/2
+else:
+    FPtoPutIn = (FPmissing/2)+(FPotherPlayer/2)
+    
+FPtoPutIn=math.ceil(FPtoPutIn) # allways round up
+print('You have to put in to secure the place: '+str(FPtoPutIn))
+FPwin = FPtotalBonus - FPtoPutIn
+
+if FPwin >=0:
+    print('Your profit: '+str(FPwin))
+else:
+    print('Your lost: '+str(FPwin))
+    print('This is not a good investment!')
